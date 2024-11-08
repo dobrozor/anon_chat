@@ -227,7 +227,7 @@ def bot_message(message):
             if chat_info != False:
                 if message.from_user.username:
                     user_id = message.from_user.id  # Получение ID пользовате
-    linked = (link + str(user_id))
+                    linked = ('tg://user?id=' + str(user_id))
                     bot.send_message(chat_info[1], f'🗣 Это мой [профиль]({linked}) кликай', parse_mode='Markdown')
                     bot.send_message(message.chat.id, sms.go_profile)
                 else:
