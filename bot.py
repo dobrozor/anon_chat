@@ -226,7 +226,9 @@ def bot_message(message):
             chat_info = db.get_active_chat(message.chat.id)
             if chat_info != False:
                 if message.from_user.username:
-                    bot.send_message(chat_info[1], '🗣 Это мой ' + '[юзернейм](http://t.me/' + message.from_user.username + '/) ' + 'кликай', parse_mode='Markdown')
+                    user_id = message.from_user.id  # Получение ID пользовате
+    linked = (link + str(user_id))
+                    bot.send_message(chat_info[1], f'🗣 Это мой [профиль]({linked}) кликай', parse_mode='Markdown')
                     bot.send_message(message.chat.id, sms.go_profile)
                 else:
                     bot.send_message(message.chat.id, sms.error_profile)
